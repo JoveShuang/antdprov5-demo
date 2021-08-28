@@ -1,0 +1,948 @@
+{
+  "loading": false,
+  "data": {
+    "page": {
+      "title": "User List",
+      "type": "basicList",
+      "searchBar": true,
+      "trash": false
+    },
+    "layout": {
+      "tableColumn": [
+        {
+          "title": "Username",
+          "dataIndex": "username",
+          "key": "username",
+          "type": "text"
+        },
+        {
+          "title": "Groups",
+          "dataIndex": "groups",
+          "key": "groups",
+          "type": "tree",
+          "data": [
+            {
+              "id": 79,
+              "parent_id": 0,
+              "name": "liningGroup",
+              "create_time": "2021-08-25T15:55:20+08:00",
+              "delete_time": null,
+              "status": 1,
+              "value": 79,
+              "title": "liningGroup",
+              "depth": 1
+            },
+            {
+              "id": 78,
+              "parent_id": 0,
+              "name": "admin99",
+              "create_time": "2021-08-23T13:58:39+08:00",
+              "delete_time": null,
+              "status": 1,
+              "value": 78,
+              "title": "admin99",
+              "depth": 1
+            },
+            {
+              "id": 76,
+              "parent_id": 0,
+              "name": "排球testttt",
+              "create_time": "2021-07-01T14:09:12+08:00",
+              "delete_time": null,
+              "status": 1,
+              "value": 76,
+              "title": "排球testttt",
+              "depth": 1,
+              "children": [
+                {
+                  "id": 77,
+                  "parent_id": 76,
+                  "name": "report",
+                  "create_time": "2021-07-20T15:28:31+08:00",
+                  "delete_time": null,
+                  "status": 1,
+                  "value": 77,
+                  "title": "report",
+                  "depth": 2
+                }
+              ]
+            },
+            {
+              "id": 75,
+              "parent_id": 0,
+              "name": "中文测试234",
+              "create_time": "2021-06-21T16:20:28+08:00",
+              "delete_time": null,
+              "status": 1,
+              "value": 75,
+              "title": "中文测试234",
+              "depth": 1
+            },
+            {
+              "id": 72,
+              "parent_id": 0,
+              "name": "test111",
+              "create_time": "2021-06-10T13:14:26+08:00",
+              "delete_time": null,
+              "status": 1,
+              "value": 72,
+              "title": "test111",
+              "depth": 1,
+              "children": [
+                {
+                  "id": 73,
+                  "parent_id": 72,
+                  "name": "test112",
+                  "create_time": "2021-06-10T13:14:34+08:00",
+                  "delete_time": null,
+                  "status": 1,
+                  "value": 73,
+                  "title": "test112",
+                  "depth": 2,
+                  "children": [
+                    {
+                      "id": 74,
+                      "parent_id": 73,
+                      "name": "test113",
+                      "create_time": "2021-06-10T13:14:42+08:00",
+                      "delete_time": null,
+                      "status": 1,
+                      "value": 74,
+                      "title": "test113",
+                      "depth": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 71,
+              "parent_id": 0,
+              "name": "父节点测试组",
+              "create_time": "2021-04-11T18:44:05+08:00",
+              "delete_time": null,
+              "status": 1,
+              "value": 71,
+              "title": "父节点测试组",
+              "depth": 1
+            },
+            {
+              "id": 70,
+              "parent_id": 0,
+              "name": "最高权限组AA",
+              "create_time": "2021-04-09T10:05:23+08:00",
+              "delete_time": null,
+              "status": 1,
+              "value": 70,
+              "title": "最高权限组AA",
+              "depth": 1
+            },
+            {
+              "id": 69,
+              "parent_id": 0,
+              "name": "Group 001",
+              "create_time": "2020-11-24T15:25:11+08:00",
+              "delete_time": null,
+              "status": 1,
+              "value": 69,
+              "title": "Group 001",
+              "depth": 1
+            },
+            {
+              "id": 68,
+              "parent_id": 0,
+              "name": "Group 0033",
+              "create_time": "2020-11-02T16:11:24+08:00",
+              "delete_time": null,
+              "status": 1,
+              "value": 68,
+              "title": "Group 0033",
+              "depth": 1
+            },
+            {
+              "id": 53,
+              "parent_id": 0,
+              "name": "Admin Group",
+              "create_time": "2020-09-21T00:10:30+08:00",
+              "delete_time": null,
+              "status": 1,
+              "value": 53,
+              "title": "Admin Group",
+              "depth": 1
+            }
+          ],
+          "hideInColumn": true
+        },
+        {
+          "title": "Display Name",
+          "dataIndex": "display_name",
+          "key": "display_name",
+          "type": "text"
+        },
+        {
+          "title": "Create Time",
+          "dataIndex": "create_time",
+          "key": "create_time",
+          "type": "datetime",
+          "sorter": true
+        },
+        {
+          "title": "Status",
+          "dataIndex": "status",
+          "key": "status",
+          "type": "switch",
+          "data": [
+            {
+              "title": "Enabled",
+              "value": 1
+            },
+            {
+              "title": "Disabled",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "title": "Trash",
+          "dataIndex": "trash",
+          "key": "trash",
+          "type": "select",
+          "data": [
+            {
+              "title": "Only Trashed",
+              "value": "onlyTrashed"
+            },
+            {
+              "title": "With Trashed",
+              "value": "withTrashed"
+            },
+            {
+              "title": "Without Trashed",
+              "value": "withoutTrashed"
+            }
+          ],
+          "mode": "",
+          "hideInColumn": true
+        },
+        {
+          "dataIndex": "actions",
+          "key": "actions",
+          "type": "actions",
+          "actions": [
+            {
+              "component": "button",
+              "text": "Edit",
+              "type": "primary",
+              "action": "modal",
+              "uri": "/api/admins/:id"
+            },
+            {
+              "component": "button",
+              "text": "Page edit",
+              "type": "default",
+              "action": "page",
+              "uri": "/api/admins/:id"
+            },
+            {
+              "component": "button",
+              "text": "Delete",
+              "type": "default",
+              "action": "delete",
+              "uri": "/api/admins/delete",
+              "method": "post"
+            }
+          ],
+          "title": "Action"
+        }
+      ],
+      "tableToolBar": [
+        {
+          "component": "button",
+          "text": "Add",
+          "type": "primary",
+          "action": "modal",
+          "id": "add",
+          "uri": "/api/admins/add"
+        },
+        {
+          "component": "button",
+          "text": "Page add",
+          "type": "default",
+          "action": "page",
+          "uri": "/api/admins/add"
+        },
+        {
+          "component": "button",
+          "text": "Reload",
+          "type": "default",
+          "action": "reload"
+        }
+      ],
+      "batchToolBar": [
+        {
+          "component": "button",
+          "text": "Delete",
+          "type": "danger",
+          "action": "delete",
+          "uri": "/api/admins/delete",
+          "method": "post"
+        },
+        {
+          "component": "button",
+          "text": "Disable",
+          "type": "default",
+          "action": "batchDisable"
+        }
+      ]
+    },
+    "dataSource": [
+      {
+        "id": 695,
+        "username": "admin695",
+        "display_name": "",
+        "create_time": "2021-08-25T13:45:55+08:00",
+        "delete_time": null,
+        "status": 1,
+        "groups": [
+          {
+            "id": 53,
+            "parent_id": 0,
+            "name": "Admin Group",
+            "create_time": "2020-09-21T00:10:30+08:00",
+            "update_time": "2021-02-11T17:41:19+08:00",
+            "delete_time": null,
+            "status": 1,
+            "pivot": {
+              "id": 465,
+              "admin_id": 695,
+              "group_id": 53,
+              "create_time": "0000-00-00 00:00:00",
+              "update_time": "0000-00-00 00:00:00",
+              "delete_time": null,
+              "status": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": 694,
+        "username": "zhang02",
+        "display_name": "",
+        "create_time": "2021-08-24T00:43:10+08:00",
+        "delete_time": null,
+        "status": 1,
+        "groups": []
+      },
+      {
+        "id": 693,
+        "username": "zhang01",
+        "display_name": "zhang01",
+        "create_time": "2021-08-23T22:55:23+08:00",
+        "delete_time": null,
+        "status": 0,
+        "groups": []
+      },
+      {
+        "id": 692,
+        "username": "abc1234",
+        "display_name": "",
+        "create_time": "2021-08-23T22:47:09+08:00",
+        "delete_time": null,
+        "status": 0,
+        "groups": []
+      },
+      {
+        "id": 691,
+        "username": "admin99",
+        "display_name": "admin99",
+        "create_time": "2021-08-23T13:58:12+08:00",
+        "delete_time": null,
+        "status": 1,
+        "groups": [
+          {
+            "id": 78,
+            "parent_id": 0,
+            "name": "admin99",
+            "create_time": "2021-08-23T13:58:39+08:00",
+            "update_time": "2021-08-23T13:59:27+08:00",
+            "delete_time": null,
+            "status": 1,
+            "pivot": {
+              "id": 464,
+              "admin_id": 691,
+              "group_id": 78,
+              "create_time": "0000-00-00 00:00:00",
+              "update_time": "0000-00-00 00:00:00",
+              "delete_time": null,
+              "status": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": 690,
+        "username": "12345678",
+        "display_name": "12345678",
+        "create_time": "2021-08-22T23:32:27+08:00",
+        "delete_time": null,
+        "status": 0,
+        "groups": [
+          {
+            "id": 77,
+            "parent_id": 76,
+            "name": "report",
+            "create_time": "2021-07-20T15:28:31+08:00",
+            "update_time": "2021-07-20T15:29:10+08:00",
+            "delete_time": null,
+            "status": 1,
+            "pivot": {
+              "id": 462,
+              "admin_id": 690,
+              "group_id": 77,
+              "create_time": "0000-00-00 00:00:00",
+              "update_time": "0000-00-00 00:00:00",
+              "delete_time": null,
+              "status": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": 689,
+        "username": "zhangsan1",
+        "display_name": "2111",
+        "create_time": "2021-08-22T16:32:57+08:00",
+        "delete_time": null,
+        "status": 1,
+        "groups": []
+      },
+      {
+        "id": 688,
+        "username": "zhangsan",
+        "display_name": "TTGG1234",
+        "create_time": "2021-08-22T16:06:45+08:00",
+        "delete_time": null,
+        "status": 1,
+        "groups": [
+          {
+            "id": 71,
+            "parent_id": 0,
+            "name": "父节点测试组",
+            "create_time": "2021-04-11T18:44:05+08:00",
+            "update_time": "2021-08-17T22:52:34+08:00",
+            "delete_time": null,
+            "status": 1,
+            "pivot": {
+              "id": 461,
+              "admin_id": 688,
+              "group_id": 71,
+              "create_time": "0000-00-00 00:00:00",
+              "update_time": "0000-00-00 00:00:00",
+              "delete_time": null,
+              "status": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": 687,
+        "username": "admin123123",
+        "display_name": "111123",
+        "create_time": "2021-08-19T17:33:34+08:00",
+        "delete_time": null,
+        "status": 1,
+        "groups": []
+      },
+      {
+        "id": 686,
+        "username": "dfghjjk",
+        "display_name": "123121",
+        "create_time": "2021-08-18T15:56:17+08:00",
+        "delete_time": null,
+        "status": 0,
+        "groups": []
+      }
+    ],
+    "meta": {
+      "total": 467,
+      "per_page": 10,
+      "page": 2
+    }
+  },
+  "params": [],
+  "fetches": {
+    "AHOOKS_USE_REQUEST_DEFAULT_KEY": {
+      "loading": false,
+      "params": [],
+      "data": {
+        "page": {
+          "title": "User List",
+          "type": "basicList",
+          "searchBar": true,
+          "trash": false
+        },
+        "layout": {
+          "tableColumn": [
+            {
+              "title": "Username",
+              "dataIndex": "username",
+              "key": "username",
+              "type": "text"
+            },
+            {
+              "title": "Groups",
+              "dataIndex": "groups",
+              "key": "groups",
+              "type": "tree",
+              "data": [
+                {
+                  "id": 79,
+                  "parent_id": 0,
+                  "name": "liningGroup",
+                  "create_time": "2021-08-25T15:55:20+08:00",
+                  "delete_time": null,
+                  "status": 1,
+                  "value": 79,
+                  "title": "liningGroup",
+                  "depth": 1
+                },
+                {
+                  "id": 78,
+                  "parent_id": 0,
+                  "name": "admin99",
+                  "create_time": "2021-08-23T13:58:39+08:00",
+                  "delete_time": null,
+                  "status": 1,
+                  "value": 78,
+                  "title": "admin99",
+                  "depth": 1
+                },
+                {
+                  "id": 76,
+                  "parent_id": 0,
+                  "name": "排球testttt",
+                  "create_time": "2021-07-01T14:09:12+08:00",
+                  "delete_time": null,
+                  "status": 1,
+                  "value": 76,
+                  "title": "排球testttt",
+                  "depth": 1,
+                  "children": [
+                    {
+                      "id": 77,
+                      "parent_id": 76,
+                      "name": "report",
+                      "create_time": "2021-07-20T15:28:31+08:00",
+                      "delete_time": null,
+                      "status": 1,
+                      "value": 77,
+                      "title": "report",
+                      "depth": 2
+                    }
+                  ]
+                },
+                {
+                  "id": 75,
+                  "parent_id": 0,
+                  "name": "中文测试234",
+                  "create_time": "2021-06-21T16:20:28+08:00",
+                  "delete_time": null,
+                  "status": 1,
+                  "value": 75,
+                  "title": "中文测试234",
+                  "depth": 1
+                },
+                {
+                  "id": 72,
+                  "parent_id": 0,
+                  "name": "test111",
+                  "create_time": "2021-06-10T13:14:26+08:00",
+                  "delete_time": null,
+                  "status": 1,
+                  "value": 72,
+                  "title": "test111",
+                  "depth": 1,
+                  "children": [
+                    {
+                      "id": 73,
+                      "parent_id": 72,
+                      "name": "test112",
+                      "create_time": "2021-06-10T13:14:34+08:00",
+                      "delete_time": null,
+                      "status": 1,
+                      "value": 73,
+                      "title": "test112",
+                      "depth": 2,
+                      "children": [
+                        {
+                          "id": 74,
+                          "parent_id": 73,
+                          "name": "test113",
+                          "create_time": "2021-06-10T13:14:42+08:00",
+                          "delete_time": null,
+                          "status": 1,
+                          "value": 74,
+                          "title": "test113",
+                          "depth": 3
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": 71,
+                  "parent_id": 0,
+                  "name": "父节点测试组",
+                  "create_time": "2021-04-11T18:44:05+08:00",
+                  "delete_time": null,
+                  "status": 1,
+                  "value": 71,
+                  "title": "父节点测试组",
+                  "depth": 1
+                },
+                {
+                  "id": 70,
+                  "parent_id": 0,
+                  "name": "最高权限组AA",
+                  "create_time": "2021-04-09T10:05:23+08:00",
+                  "delete_time": null,
+                  "status": 1,
+                  "value": 70,
+                  "title": "最高权限组AA",
+                  "depth": 1
+                },
+                {
+                  "id": 69,
+                  "parent_id": 0,
+                  "name": "Group 001",
+                  "create_time": "2020-11-24T15:25:11+08:00",
+                  "delete_time": null,
+                  "status": 1,
+                  "value": 69,
+                  "title": "Group 001",
+                  "depth": 1
+                },
+                {
+                  "id": 68,
+                  "parent_id": 0,
+                  "name": "Group 0033",
+                  "create_time": "2020-11-02T16:11:24+08:00",
+                  "delete_time": null,
+                  "status": 1,
+                  "value": 68,
+                  "title": "Group 0033",
+                  "depth": 1
+                },
+                {
+                  "id": 53,
+                  "parent_id": 0,
+                  "name": "Admin Group",
+                  "create_time": "2020-09-21T00:10:30+08:00",
+                  "delete_time": null,
+                  "status": 1,
+                  "value": 53,
+                  "title": "Admin Group",
+                  "depth": 1
+                }
+              ],
+              "hideInColumn": true
+            },
+            {
+              "title": "Display Name",
+              "dataIndex": "display_name",
+              "key": "display_name",
+              "type": "text"
+            },
+            {
+              "title": "Create Time",
+              "dataIndex": "create_time",
+              "key": "create_time",
+              "type": "datetime",
+              "sorter": true
+            },
+            {
+              "title": "Status",
+              "dataIndex": "status",
+              "key": "status",
+              "type": "switch",
+              "data": [
+                {
+                  "title": "Enabled",
+                  "value": 1
+                },
+                {
+                  "title": "Disabled",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "title": "Trash",
+              "dataIndex": "trash",
+              "key": "trash",
+              "type": "select",
+              "data": [
+                {
+                  "title": "Only Trashed",
+                  "value": "onlyTrashed"
+                },
+                {
+                  "title": "With Trashed",
+                  "value": "withTrashed"
+                },
+                {
+                  "title": "Without Trashed",
+                  "value": "withoutTrashed"
+                }
+              ],
+              "mode": "",
+              "hideInColumn": true
+            },
+            {
+              "dataIndex": "actions",
+              "key": "actions",
+              "type": "actions",
+              "actions": [
+                {
+                  "component": "button",
+                  "text": "Edit",
+                  "type": "primary",
+                  "action": "modal",
+                  "uri": "/api/admins/:id"
+                },
+                {
+                  "component": "button",
+                  "text": "Page edit",
+                  "type": "default",
+                  "action": "page",
+                  "uri": "/api/admins/:id"
+                },
+                {
+                  "component": "button",
+                  "text": "Delete",
+                  "type": "default",
+                  "action": "delete",
+                  "uri": "/api/admins/delete",
+                  "method": "post"
+                }
+              ],
+              "title": "Action"
+            }
+          ],
+          "tableToolBar": [
+            {
+              "component": "button",
+              "text": "Add",
+              "type": "primary",
+              "action": "modal",
+              "id": "add",
+              "uri": "/api/admins/add"
+            },
+            {
+              "component": "button",
+              "text": "Page add",
+              "type": "default",
+              "action": "page",
+              "uri": "/api/admins/add"
+            },
+            {
+              "component": "button",
+              "text": "Reload",
+              "type": "default",
+              "action": "reload"
+            }
+          ],
+          "batchToolBar": [
+            {
+              "component": "button",
+              "text": "Delete",
+              "type": "danger",
+              "action": "delete",
+              "uri": "/api/admins/delete",
+              "method": "post"
+            },
+            {
+              "component": "button",
+              "text": "Disable",
+              "type": "default",
+              "action": "batchDisable"
+            }
+          ]
+        },
+        "dataSource": [
+          {
+            "id": 695,
+            "username": "admin695",
+            "display_name": "",
+            "create_time": "2021-08-25T13:45:55+08:00",
+            "delete_time": null,
+            "status": 1,
+            "groups": [
+              {
+                "id": 53,
+                "parent_id": 0,
+                "name": "Admin Group",
+                "create_time": "2020-09-21T00:10:30+08:00",
+                "update_time": "2021-02-11T17:41:19+08:00",
+                "delete_time": null,
+                "status": 1,
+                "pivot": {
+                  "id": 465,
+                  "admin_id": 695,
+                  "group_id": 53,
+                  "create_time": "0000-00-00 00:00:00",
+                  "update_time": "0000-00-00 00:00:00",
+                  "delete_time": null,
+                  "status": 1
+                }
+              }
+            ]
+          },
+          {
+            "id": 694,
+            "username": "zhang02",
+            "display_name": "",
+            "create_time": "2021-08-24T00:43:10+08:00",
+            "delete_time": null,
+            "status": 1,
+            "groups": []
+          },
+          {
+            "id": 693,
+            "username": "zhang01",
+            "display_name": "zhang01",
+            "create_time": "2021-08-23T22:55:23+08:00",
+            "delete_time": null,
+            "status": 0,
+            "groups": []
+          },
+          {
+            "id": 692,
+            "username": "abc1234",
+            "display_name": "",
+            "create_time": "2021-08-23T22:47:09+08:00",
+            "delete_time": null,
+            "status": 0,
+            "groups": []
+          },
+          {
+            "id": 691,
+            "username": "admin99",
+            "display_name": "admin99",
+            "create_time": "2021-08-23T13:58:12+08:00",
+            "delete_time": null,
+            "status": 1,
+            "groups": [
+              {
+                "id": 78,
+                "parent_id": 0,
+                "name": "admin99",
+                "create_time": "2021-08-23T13:58:39+08:00",
+                "update_time": "2021-08-23T13:59:27+08:00",
+                "delete_time": null,
+                "status": 1,
+                "pivot": {
+                  "id": 464,
+                  "admin_id": 691,
+                  "group_id": 78,
+                  "create_time": "0000-00-00 00:00:00",
+                  "update_time": "0000-00-00 00:00:00",
+                  "delete_time": null,
+                  "status": 1
+                }
+              }
+            ]
+          },
+          {
+            "id": 690,
+            "username": "12345678",
+            "display_name": "12345678",
+            "create_time": "2021-08-22T23:32:27+08:00",
+            "delete_time": null,
+            "status": 0,
+            "groups": [
+              {
+                "id": 77,
+                "parent_id": 76,
+                "name": "report",
+                "create_time": "2021-07-20T15:28:31+08:00",
+                "update_time": "2021-07-20T15:29:10+08:00",
+                "delete_time": null,
+                "status": 1,
+                "pivot": {
+                  "id": 462,
+                  "admin_id": 690,
+                  "group_id": 77,
+                  "create_time": "0000-00-00 00:00:00",
+                  "update_time": "0000-00-00 00:00:00",
+                  "delete_time": null,
+                  "status": 1
+                }
+              }
+            ]
+          },
+          {
+            "id": 689,
+            "username": "zhangsan1",
+            "display_name": "2111",
+            "create_time": "2021-08-22T16:32:57+08:00",
+            "delete_time": null,
+            "status": 1,
+            "groups": []
+          },
+          {
+            "id": 688,
+            "username": "zhangsan",
+            "display_name": "TTGG1234",
+            "create_time": "2021-08-22T16:06:45+08:00",
+            "delete_time": null,
+            "status": 1,
+            "groups": [
+              {
+                "id": 71,
+                "parent_id": 0,
+                "name": "父节点测试组",
+                "create_time": "2021-04-11T18:44:05+08:00",
+                "update_time": "2021-08-17T22:52:34+08:00",
+                "delete_time": null,
+                "status": 1,
+                "pivot": {
+                  "id": 461,
+                  "admin_id": 688,
+                  "group_id": 71,
+                  "create_time": "0000-00-00 00:00:00",
+                  "update_time": "0000-00-00 00:00:00",
+                  "delete_time": null,
+                  "status": 1
+                }
+              }
+            ]
+          },
+          {
+            "id": 687,
+            "username": "admin123123",
+            "display_name": "111123",
+            "create_time": "2021-08-19T17:33:34+08:00",
+            "delete_time": null,
+            "status": 1,
+            "groups": []
+          },
+          {
+            "id": 686,
+            "username": "dfghjjk",
+            "display_name": "123121",
+            "create_time": "2021-08-18T15:56:17+08:00",
+            "delete_time": null,
+            "status": 0,
+            "groups": []
+          }
+        ],
+        "meta": {
+          "total": 467,
+          "per_page": 10,
+          "page": 2
+        }
+      }
+    }
+  }
+}
