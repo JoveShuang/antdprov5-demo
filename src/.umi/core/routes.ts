@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import { ApplyPluginsType, dynamic } from '/Users/demetrius/Desktop/antdpro5/node_modules/umi/node_modules/@umijs/runtime';
+import { ApplyPluginsType, dynamic } from '/Users/demetrius/Desktop/antdprov5-demo/node_modules/umi/node_modules/@umijs/runtime';
 import * as umiExports from './umiExports';
 import { plugin } from './plugin';
 import LoadingComponent from '@ant-design/pro-layout/es/PageLoading';
@@ -9,20 +9,20 @@ export function getRoutes() {
   const routes = [
   {
     "path": "/umi/plugin/openapi",
-    "component": dynamic({ loader: () => import(/* webpackChunkName: '.umi__plugin-openapi__openapi' */'/Users/demetrius/Desktop/antdpro5/src/.umi/plugin-openapi/openapi.tsx'), loading: LoadingComponent})
+    "component": dynamic({ loader: () => import(/* webpackChunkName: '.umi__plugin-openapi__openapi' */'/Users/demetrius/Desktop/antdprov5-demo/src/.umi/plugin-openapi/openapi.tsx'), loading: LoadingComponent})
   },
   {
     "path": "/",
-    "component": dynamic({ loader: () => import(/* webpackChunkName: '.umi__plugin-layout__Layout' */'/Users/demetrius/Desktop/antdpro5/src/.umi/plugin-layout/Layout.tsx'), loading: LoadingComponent}),
+    "component": dynamic({ loader: () => import(/* webpackChunkName: '.umi__plugin-layout__Layout' */'/Users/demetrius/Desktop/antdprov5-demo/src/.umi/plugin-layout/Layout.tsx'), loading: LoadingComponent}),
     "routes": [
       {
         "path": "/~demos/:uuid",
         "layout": false,
-        "wrappers": [dynamic({ loader: () => import(/* webpackChunkName: 'wrappers' */'/Users/demetrius/Desktop/antdpro5/node_modules/@umijs/preset-dumi/lib/theme/layout'), loading: LoadingComponent})],
+        "wrappers": [dynamic({ loader: () => import(/* webpackChunkName: 'wrappers' */'/Users/demetrius/Desktop/antdprov5-demo/node_modules/@umijs/preset-dumi/lib/theme/layout'), loading: LoadingComponent})],
         "component": (props) => React.createElement(
         dynamic({
           loader: async () => {
-            const { default: getDemoRenderArgs } = await import(/* webpackChunkName: 'dumi_demos' */ '/Users/demetrius/Desktop/antdpro5/node_modules/@umijs/preset-dumi/lib/plugins/features/demo/getDemoRenderArgs');
+            const { default: getDemoRenderArgs } = await import(/* webpackChunkName: 'dumi_demos' */ '/Users/demetrius/Desktop/antdprov5-demo/node_modules/@umijs/preset-dumi/lib/plugins/features/demo/getDemoRenderArgs');
             const { default: Previewer } = await import(/* webpackChunkName: 'dumi_demos' */ 'dumi-theme-default/es/builtins/Previewer.js');
             const { default: demos } = await import(/* webpackChunkName: 'dumi_demos' */ '@@/dumi/demos');
             const { usePrefersColor } = await import(/* webpackChunkName: 'dumi_demos' */ 'dumi/theme');
@@ -63,18 +63,18 @@ export function getRoutes() {
         "__dumiRoot": true,
         "layout": false,
         "path": "/~docs",
-        "wrappers": [dynamic({ loader: () => import(/* webpackChunkName: 'wrappers' */'/Users/demetrius/Desktop/antdpro5/node_modules/@umijs/preset-dumi/lib/theme/layout'), loading: LoadingComponent}), dynamic({ loader: () => import(/* webpackChunkName: 'wrappers' */'/Users/demetrius/Desktop/antdpro5/node_modules/dumi-theme-default/es/layout.js'), loading: LoadingComponent})],
+        "wrappers": [dynamic({ loader: () => import(/* webpackChunkName: 'wrappers' */'/Users/demetrius/Desktop/antdprov5-demo/node_modules/@umijs/preset-dumi/lib/theme/layout'), loading: LoadingComponent}), dynamic({ loader: () => import(/* webpackChunkName: 'wrappers' */'/Users/demetrius/Desktop/antdprov5-demo/node_modules/dumi-theme-default/es/layout.js'), loading: LoadingComponent})],
         "routes": [
           {
             "path": "/~docs",
-            "component": dynamic({ loader: () => import(/* webpackChunkName: 'README.md' */'/Users/demetrius/Desktop/antdpro5/README.md'), loading: LoadingComponent}),
+            "component": dynamic({ loader: () => import(/* webpackChunkName: 'README.md' */'/Users/demetrius/Desktop/antdprov5-demo/README.md'), loading: LoadingComponent}),
             "exact": true,
             "meta": {
               "locale": "en-US",
               "order": null,
               "filePath": "README.md",
-              "updatedTime": 1630128760904,
-              "componentName": "antdpro5",
+              "updatedTime": 1630140933000,
+              "componentName": "antdprov5-demo",
               "slugs": [
                 {
                   "depth": 1,
@@ -123,11 +123,11 @@ export function getRoutes() {
           },
           {
             "path": "/~docs/components",
-            "component": dynamic({ loader: () => import(/* webpackChunkName: 'components__index.md' */'/Users/demetrius/Desktop/antdpro5/src/components/index.md'), loading: LoadingComponent}),
+            "component": dynamic({ loader: () => import(/* webpackChunkName: 'components__index.md' */'/Users/demetrius/Desktop/antdprov5-demo/src/components/index.md'), loading: LoadingComponent}),
             "exact": true,
             "meta": {
               "filePath": "src/components/index.md",
-              "updatedTime": 1630128760871,
+              "updatedTime": 1630140933000,
               "title": "业务组件",
               "sidemenu": false,
               "slugs": [
@@ -203,13 +203,13 @@ export function getRoutes() {
               {
                 "name": "login",
                 "path": "/user/login",
-                "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__user__Login' */'/Users/demetrius/Desktop/antdpro5/src/pages/user/Login'), loading: LoadingComponent}),
+                "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__user__Login' */'/Users/demetrius/Desktop/antdprov5-demo/src/pages/user/Login'), loading: LoadingComponent}),
                 "exact": true
               }
             ]
           },
           {
-            "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__404' */'/Users/demetrius/Desktop/antdpro5/src/pages/404'), loading: LoadingComponent}),
+            "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__404' */'/Users/demetrius/Desktop/antdprov5-demo/src/pages/404'), loading: LoadingComponent}),
             "exact": true
           }
         ]
@@ -218,7 +218,7 @@ export function getRoutes() {
         "path": "/welcome",
         "name": "welcome",
         "icon": "smile",
-        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__Welcome' */'/Users/demetrius/Desktop/antdpro5/src/pages/Welcome'), loading: LoadingComponent}),
+        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__Welcome' */'/Users/demetrius/Desktop/antdprov5-demo/src/pages/Welcome'), loading: LoadingComponent}),
         "exact": true
       },
       {
@@ -226,17 +226,17 @@ export function getRoutes() {
         "name": "admin",
         "icon": "crown",
         "access": "canAdmin",
-        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__Admin' */'/Users/demetrius/Desktop/antdpro5/src/pages/Admin'), loading: LoadingComponent}),
+        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__Admin' */'/Users/demetrius/Desktop/antdprov5-demo/src/pages/Admin'), loading: LoadingComponent}),
         "routes": [
           {
             "path": "/admin/sub-page",
             "name": "sub-page",
             "icon": "smile",
-            "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__Welcome' */'/Users/demetrius/Desktop/antdpro5/src/pages/Welcome'), loading: LoadingComponent}),
+            "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__Welcome' */'/Users/demetrius/Desktop/antdprov5-demo/src/pages/Welcome'), loading: LoadingComponent}),
             "exact": true
           },
           {
-            "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__404' */'/Users/demetrius/Desktop/antdpro5/src/pages/404'), loading: LoadingComponent}),
+            "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__404' */'/Users/demetrius/Desktop/antdprov5-demo/src/pages/404'), loading: LoadingComponent}),
             "exact": true
           }
         ]
@@ -245,14 +245,14 @@ export function getRoutes() {
         "name": "list.table-list",
         "icon": "table",
         "path": "/list",
-        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__TableList' */'/Users/demetrius/Desktop/antdpro5/src/pages/TableList'), loading: LoadingComponent}),
+        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__TableList' */'/Users/demetrius/Desktop/antdprov5-demo/src/pages/TableList'), loading: LoadingComponent}),
         "exact": true
       },
       {
         "name": "basic-list",
         "icon": "table",
         "path": "/basic-list",
-        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__BasicList' */'/Users/demetrius/Desktop/antdpro5/src/pages/BasicList'), loading: LoadingComponent}),
+        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__BasicList' */'/Users/demetrius/Desktop/antdprov5-demo/src/pages/BasicList'), loading: LoadingComponent}),
         "exact": true
       },
       {
@@ -266,7 +266,7 @@ export function getRoutes() {
         "exact": true
       },
       {
-        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__404' */'/Users/demetrius/Desktop/antdpro5/src/pages/404'), loading: LoadingComponent}),
+        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__404' */'/Users/demetrius/Desktop/antdprov5-demo/src/pages/404'), loading: LoadingComponent}),
         "exact": true
       }
     ]

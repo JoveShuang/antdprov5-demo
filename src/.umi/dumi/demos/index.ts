@@ -6,7 +6,7 @@ export default {
   'components-demo': {
     component: dynamic({
   loader: async function () {
-    var _interopRequireDefault = require("/Users/demetrius/Desktop/antdpro5/node_modules/@umijs/babel-preset-umi/node_modules/@babel/runtime/helpers/interopRequireDefault");
+    var _interopRequireDefault = require("/Users/demetrius/Desktop/antdprov5-demo/node_modules/@umijs/babel-preset-umi/node_modules/@babel/runtime/helpers/interopRequireDefault");
 
     var _react = _interopRequireDefault(await import("react"));
 
@@ -24,7 +24,7 @@ export default {
   'components-demo-1': {
     component: dynamic({
   loader: async function () {
-    var _interopRequireDefault = require("/Users/demetrius/Desktop/antdpro5/node_modules/@umijs/babel-preset-umi/node_modules/@babel/runtime/helpers/interopRequireDefault");
+    var _interopRequireDefault = require("/Users/demetrius/Desktop/antdprov5-demo/node_modules/@umijs/babel-preset-umi/node_modules/@babel/runtime/helpers/interopRequireDefault");
 
     var _antd = await import("antd");
 
@@ -56,7 +56,7 @@ export default {
   'components-demo-2': {
     component: dynamic({
   loader: async function () {
-    var _interopRequireDefault = require("/Users/demetrius/Desktop/antdpro5/node_modules/@umijs/babel-preset-umi/node_modules/@babel/runtime/helpers/interopRequireDefault");
+    var _interopRequireDefault = require("/Users/demetrius/Desktop/antdprov5-demo/node_modules/@umijs/babel-preset-umi/node_modules/@babel/runtime/helpers/interopRequireDefault");
 
     var _react = _interopRequireDefault(await import("react"));
 
@@ -93,7 +93,7 @@ export default {
   'components-demo-3': {
     component: dynamic({
   loader: async function () {
-    var _interopRequireDefault = require("/Users/demetrius/Desktop/antdpro5/node_modules/@umijs/babel-preset-umi/node_modules/@babel/runtime/helpers/interopRequireDefault");
+    var _interopRequireDefault = require("/Users/demetrius/Desktop/antdprov5-demo/node_modules/@umijs/babel-preset-umi/node_modules/@babel/runtime/helpers/interopRequireDefault");
 
     var _antd = await import("antd");
 

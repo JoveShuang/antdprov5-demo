@@ -13,6 +13,7 @@ const ColumnBuilder = (tableColumn: BasicListApi.TableColumn[] | undefined) => {
     if (column.hideInColumn !== true) {
       switch (column.type) {
         case 'datetime':
+          column.sorter = true;
           column.render = (value: string) => {
             return moment(value).format('YYYY-MM-DD HH:mm:ss');
           };
@@ -34,7 +35,7 @@ const ColumnBuilder = (tableColumn: BasicListApi.TableColumn[] | undefined) => {
       newColumns.push(column);
     }
   });
-  const idColumn = [
+  const idColumn: BasicListApi.TableColumn[] = [
     {
       title: 'ID',
       dataIndex: 'id',

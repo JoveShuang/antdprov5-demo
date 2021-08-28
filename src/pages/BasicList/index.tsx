@@ -9,14 +9,14 @@ import ActionsBuilder from './builder/ActionBuilder';
 const Index = () => {
   const [page, setPage] = useState(1);
   const [per_page, setPerPage] = useState(10);
-  const [order, setOrder] = useState('desc')
+  const [sortQuery, setSortQuery] = useState('');
   const init = useRequest<{ data: BasicListApi.Data }>(
-    `https://public-api-v2.aspirantzhang.com/api/admins?X-API-KEY=antd&page=${page}&per_page=${per_page}&sort=${['create_time']}&order=${order}`,
+    `https://public-api-v2.aspirantzhang.com/api/admins?X-API-KEY=antd&page=${page}&per_page=${per_page}${sortQuery}`,
   );
 
   useEffect(() => {
     init.run();
-  }, [page, per_page, order]);
+  }, [page, per_page, sortQuery]);
 
   const searchLayout = () => {};
   const beforeTableLayout = () => {
@@ -36,15 +36,14 @@ const Index = () => {
     setPerPage(_per_page);
   };
 
-  const onChange = (pagination, filters, sorter, extra) => {
-    if (sorter?.order === 'descend') {
-      setOrder('desc')
-    } else if (sorter?.order === 'ascend') {
-      setOrder('asc')
+  const onChange = (_: any, __: any, sorter: any) => {
+    if (sorter?.order === undefined) {
+      setSortQuery('');
     } else {
-      setOrder('')
+      const orderType = sorter?.order === 'descend' ? 'desc' : 'asc';
+      setSortQuery(`&sort=${sorter.field}&order=${orderType}`);
     }
-  }
+  };
 
   const afterTableLayout = () => {
     return (
