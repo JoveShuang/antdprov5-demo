@@ -1,12 +1,13 @@
 declare module BasicListApi {
-  export interface Page {
+  type ActionHandler = (action: BasicListApit.Action, record: any) => void;
+  type Page = {
     title: string;
     type: string;
-    searchBar: boolean;
-    trash: boolean;
-  }
+    searchBar?: boolean;
+    trash?: boolean;
+  };
 
-  export interface Child2 {
+  type Child2 = {
     id: number;
     parent_id: number;
     name: string;
@@ -16,9 +17,9 @@ declare module BasicListApi {
     value: number;
     title: string;
     depth: number;
-  }
+  };
 
-  export interface Child {
+  type Child = {
     id: number;
     parent_id: number;
     name: string;
@@ -29,241 +30,80 @@ declare module BasicListApi {
     title: string;
     depth: number;
     children: Child2[];
-  }
+  };
 
-  export interface Datum {
-    id: number;
-    parent_id: number;
-    name: string;
-    create_time: Date;
-    delete_time?: any;
-    status: number;
-    value: any;
-    title: string;
-    depth: number;
-    children: Child[];
-  }
-
-  export interface Action {
+  type Action = {
     component: string;
     text: string;
     type: string;
     action: string;
-    uri: string;
-    method: string;
-  }
+    uri?: string;
+    method?: string;
+  };
 
-  export interface TableColumn {
+  type Field = {
     title: string;
     dataIndex: string;
     key: string;
-    type?: string;
-    data?: Datum[];
-    hideInColumn?: boolean;
-    sorter?: boolean;
-    mode?: string;
-    actions?: Action[];
     [key: string]: any;
-  }
+  };
 
-  export interface Layout {
-    tableColumn: TableColumn[];
-    tableToolBar: Action[];
-    batchToolBar: Action[];
-  }
+  type DataSource = {
+    [key: string]: any;
+  };
 
-  export interface Pivot {
-    id: number;
-    admin_id: number;
-    group_id: number;
-    create_time: string;
-    update_time: string;
-    delete_time?: any;
-    status: number;
-  }
-
-  export interface Group {
-    id: number;
-    parent_id: number;
-    name: string;
-    create_time: Date;
-    update_time: Date;
-    delete_time?: any;
-    status: number;
-    pivot: Pivot;
-  }
-
-  export interface DataSource {
-    id: number;
-    username: string;
-    display_name: string;
-    create_time: Date;
-    delete_time?: any;
-    status: number;
-    groups: Group[];
-  }
-
-  export interface Meta {
+  type Meta = {
     total: number;
     per_page: number;
     page: number;
-  }
+  };
 
-  export interface Data {
+  type Data = {
     page: Page;
     layout: Layout;
     dataSource: DataSource[];
     meta: Meta;
-  }
+  };
 
-  export interface Page2 {
-    title: string;
-    type: string;
-    searchBar: boolean;
-    trash: boolean;
-  }
-
-  export interface Child4 {
-    id: number;
-    parent_id: number;
+  type Tabs = {
     name: string;
-    create_time: Date;
-    delete_time?: any;
-    status: number;
-    value: number;
     title: string;
-    depth: number;
-  }
+    data: Field[];
+  };
 
-  export interface Child3 {
-    id: number;
-    parent_id: number;
+  type Actions = {
     name: string;
-    create_time: Date;
-    delete_time?: any;
-    status: number;
-    value: number;
     title: string;
-    depth: number;
-    children: Child4[];
-  }
+    data: Action[];
+  };
 
-  export interface Datum2 {
-    id: number;
-    parent_id: number;
-    name: string;
-    create_time: Date;
-    delete_time?: any;
-    status: number;
-    value: any;
-    title: string;
-    depth: number;
-    children: Child3[];
-  }
+  type ListLayout = {
+    tableColumn: Field[];
+    tableToolBar: Action[];
+    batchToolBar: Action[];
+  };
 
-  export interface Action2 {
-    component: string;
-    text: string;
-    type: string;
-    action: string;
-    uri: string;
-    method: string;
-  }
+  type PageLayout = {
+    tabs: Tab[];
+    actions: Action[];
+  };
 
-  export interface TableColumn2 {
-    title: string;
-    dataIndex: string;
-    key: string;
-    type: string;
-    data: Datum2[];
-    hideInColumn?: boolean;
-    sorter?: boolean;
-    mode: string;
-    actions: Action2[];
-  }
+  type ListData = {
+    page: Page;
+    layout: ListLayout;
+    dataSource: DataSource[];
+    meta: Meta;
+  };
 
-  export interface TableToolBar2 {
-    component: string;
-    text: string;
-    type: string;
-    action: string;
-    id: string;
-    uri: string;
-  }
+  type PageData = {
+    page: Page;
+    layout: PageLayout;
+    dataSource: DataSource;
+  };
 
-  export interface BatchToolBar2 {
-    component: string;
-    text: string;
-    type: string;
-    action: string;
-    uri: string;
-    method: string;
-  }
-
-  export interface Layout2 {
-    tableColumn: TableColumn2[];
-    tableToolBar: TableToolBar2[];
-    batchToolBar: BatchToolBar2[];
-  }
-
-  export interface Pivot2 {
-    id: number;
-    admin_id: number;
-    group_id: number;
-    create_time: string;
-    update_time: string;
-    delete_time?: any;
-    status: number;
-  }
-
-  export interface Group2 {
-    id: number;
-    parent_id: number;
-    name: string;
-    create_time: Date;
-    update_time: Date;
-    delete_time?: any;
-    status: number;
-    pivot: Pivot2;
-  }
-
-  export interface DataSource2 {
-    id: number;
-    username: string;
-    display_name: string;
-    create_time: Date;
-    delete_time?: any;
-    status: number;
-    groups: Group2[];
-  }
-
-  export interface Meta2 {
-    total: number;
-    per_page: number;
-    page: number;
-  }
-
-  export interface Data2 {
-    page: Page2;
-    layout: Layout2;
-    dataSource: DataSource2[];
-    meta: Meta2;
-  }
-
-  export interface AHOOKSUSEREQUESTDEFAULTKEY {
+  type RootObject = {
     loading: boolean;
-    params: any[];
-    data: Data2;
-  }
-
-  export interface Fetches {
-    AHOOKS_USE_REQUEST_DEFAULT_KEY: AHOOKSUSEREQUESTDEFAULTKEY;
-  }
-
-  export interface RootObject {
-    loading: boolean;
-    data: Data;
-    params: any[];
-    fetches: Fetches;
-  }
+    message: string;
+    data: PageData | ListData;
+  };
 }

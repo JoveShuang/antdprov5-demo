@@ -2,13 +2,16 @@ import moment from 'moment';
 import { Tag, Space } from 'antd';
 import ActionsBuilder from './ActionBuilder';
 
-const ColumnBuilder = (tableColumn: BasicListApi.TableColumn[] | undefined) => {
+const ColumnBuilder = (
+  tableColumn: BasicListApi.Field[] | undefined,
+  actionHandler: BasicListApi.ActionHandler,
+) => {
   // return [{ title: 'ID', dataIndex: 'id', key: 'id'}]
   //   .concat(
   //     init?.data?.layout?.tableColumn
   //     .filter((item) => item.hideInColumn !== true) || []
   //   )
-  const newColumns: BasicListApi.TableColumn[] = [];
+  const newColumns: BasicListApi.Field[] = [];
   (tableColumn || []).forEach((column: any) => {
     if (column.hideInColumn !== true) {
       switch (column.type) {
@@ -25,8 +28,8 @@ const ColumnBuilder = (tableColumn: BasicListApi.TableColumn[] | undefined) => {
           };
           break;
         case 'actions':
-          column.render = () => {
-            return <Space>{ActionsBuilder(column.actions)}</Space>;
+          column.render = (_: any, record: any) => {
+            return <Space>{ActionsBuilder(column.actions, actionHandler, false, record)}</Space>;
           };
           break;
         default:
@@ -35,7 +38,7 @@ const ColumnBuilder = (tableColumn: BasicListApi.TableColumn[] | undefined) => {
       newColumns.push(column);
     }
   });
-  const idColumn: BasicListApi.TableColumn[] = [
+  const idColumn: BasicListApi.Field[] = [
     {
       title: 'ID',
       dataIndex: 'id',

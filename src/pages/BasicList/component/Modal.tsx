@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useRequest } from 'umi';
-import { Modal as AntdModal, Form, Input } from 'antd';
+import { Modal as AntdModal, Form, Input, message } from 'antd';
 import moment from 'moment';
 import FormBuilder from '../builder/FormBuilder';
 import ActionsBuilder from '../builder/ActionBuilder';
+import { setFieldsAdaptor, submitFieldsAdaptor } from '../helper';
 
 const Modal = ({
   modalVisible,
@@ -15,24 +16,44 @@ const Modal = ({
   modalUri: string;
 }) => {
   const [form] = Form.useForm();
-  const init = useRequest<{ data: PageApi.Data }>(`${modalUri}`, {
-    manual: true,
-  });
+  const init = useRequest<{ data: BasicListApi.PageData }>(
+    `https://public-api-v2.aspirantzhang.com${modalUri}?X-API-KEY=antd`,
+    {
+      manual: true,
+      onError: () => {
+        hideModal();
+      },
+    },
+  );
+
   const request = useRequest(
     ({ uri, method, ...formValues }) => {
+      message.loading({
+        content: 'Processing...',
+        key: 'process',
+        duration: 0,
+      });
       return {
         url: `https://public-api-v2.aspirantzhang.com${uri}`,
         method,
         data: {
-          ...formValues,
+          ...submitFieldsAdaptor(formValues),
           'X-API-KEY': 'antd',
-          create_time: moment(formValues.create_time).format(),
-          update_time: moment(formValues.update_time).format(),
         },
       };
     },
     {
       manual: true,
+      onSuccess: (res) => {
+        message.success({
+          content: res.message,
+          key: 'process',
+        });
+        hideModal();
+      },
+      formatResult: (res: any) => {
+        return res;
+      },
     },
   );
 
@@ -42,26 +63,6 @@ const Modal = ({
       init.run();
     }
   }, [modalVisible]);
-
-  const setFieldsAdaptor = (data: PageApi.Data) => {
-    if (data?.layout?.tabs && data?.dataSource) {
-      const result = {};
-      data.layout.tabs.forEach((tab: any) => {
-        tab.data.forEach((field: any) => {
-          switch (field.type) {
-            case 'datetime':
-              result[field.key] = moment(data.dataSource[field.key]);
-              break;
-            default:
-              result[field.key] = data.dataSource[field.key];
-              break;
-          }
-        });
-      });
-      return result;
-    }
-    return {};
-  };
 
   useEffect(() => {
     if (init.data) {
@@ -96,7 +97,11 @@ const Modal = ({
         title={init?.data?.page?.title}
         visible={modalVisible}
         onCancel={hideModal}
-        footer={ActionsBuilder(init?.data?.layout?.actions[0]?.data, actionHandler)}
+        footer={ActionsBuilder(
+          init?.data?.layout?.actions[0]?.data,
+          actionHandler,
+          request.loading,
+        )}
         maskClosable={false}
       >
         <Form
