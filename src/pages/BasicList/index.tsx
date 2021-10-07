@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSessionStorageState } from 'ahooks';
 import { Table, Row, Col, Card, Pagination, Space, Modal as AntdModal, message } from 'antd';
-import { useRequest, useIntl } from 'umi';
+import { useRequest, useIntl, history } from 'umi';
 import { FooterToolbar, PageContainer } from '@ant-design/pro-layout';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import ColumnBuilder from './builder/ColumnBuilder';
@@ -82,44 +82,50 @@ const Index = () => {
           }),
         );
         break;
+      case 'page': {
+        const uri = (action.uri || '').replace(/:\w+/g, (field) => {
+          return record[field.replace(':', '')];
+        });
+        history.push(`/basic-list${uri}`);
+        break;
+      }
       case 'reload':
         init.run();
         break;
       case 'delete':
       case 'deletePermanently':
-      case 'restore':
-        {
-          const operationName = intl.formatMessage({
-            id: `basic-list.list.actionHandler.operation.${action.action}`,
-          });
-          confirm({
-            title: intl.formatMessage(
-              {
-                id: 'basic-list.list.actionHandler.confirmTitle',
-              },
-              {
-                operationName,
-              },
-            ),
-            icon: <ExclamationCircleOutlined />,
-            content: batchOverview(Object.keys(record).length ? [record] : selectedRows),
-            okText: `Sure to ${action.action}!!!`,
-            okType: 'danger',
-            cancelText: 'Cancel',
-            onOk() {
-              return request.run({
-                uri: action.uri,
-                method: action.method,
-                type: action.action,
-                ids: Object.keys(record).length ? [record.id] : selectedRowKeys,
-              });
+      case 'restore': {
+        const operationName = intl.formatMessage({
+          id: `basic-list.list.actionHandler.operation.${action.action}`,
+        });
+        confirm({
+          title: intl.formatMessage(
+            {
+              id: 'basic-list.list.actionHandler.confirmTitle',
             },
-            onCancel() {
-              console.log('Cancel');
+            {
+              operationName,
             },
-          });
-        }
+          ),
+          icon: <ExclamationCircleOutlined />,
+          content: batchOverview(Object.keys(record).length ? [record] : selectedRows),
+          okText: `Sure to ${action.action}!!!`,
+          okType: 'danger',
+          cancelText: 'Cancel',
+          onOk() {
+            return request.run({
+              uri: action.uri,
+              method: action.method,
+              type: action.action,
+              ids: Object.keys(record).length ? [record.id] : selectedRowKeys,
+            });
+          },
+          onCancel() {
+            console.log('Cancel');
+          },
+        });
         break;
+      }
       default:
         break;
     }
