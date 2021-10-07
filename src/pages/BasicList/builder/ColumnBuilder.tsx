@@ -6,11 +6,6 @@ const ColumnBuilder = (
   tableColumn: BasicListApi.Field[] | undefined,
   actionHandler: BasicListApi.ActionHandler,
 ) => {
-  // return [{ title: 'ID', dataIndex: 'id', key: 'id'}]
-  //   .concat(
-  //     init?.data?.layout?.tableColumn
-  //     .filter((item) => item.hideInColumn !== true) || []
-  //   )
   const newColumns: BasicListApi.Field[] = [];
   (tableColumn || []).forEach((column: any) => {
     if (column.hideInColumn !== true) {

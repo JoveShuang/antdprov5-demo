@@ -11,10 +11,10 @@ export const submitFieldsAdaptor = (formValues: any) => {
 };
 
 export const setFieldsAdaptor = (data: BasicListApi.PageData) => {
-  if (data?.layout?.tabs && data?.dataSource) {
+  if (data?.layout?.tabs && data.dataSource) {
     const result = {};
     data.layout.tabs.forEach((tab: any) => {
-      tab.data.forEach((field: any) => {
+      tab.data?.forEach((field: any) => {
         switch (field.type) {
           case 'datetime':
             result[field.key] = moment(data.dataSource[field.key]);

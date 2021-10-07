@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRequest } from 'umi';
-import { Modal as AntdModal, Form, Input, message } from 'antd';
+import { Modal as AntdModal, Form, Input, message, Spin } from 'antd';
 import moment from 'moment';
 import FormBuilder from '../builder/FormBuilder';
 import ActionsBuilder from '../builder/ActionBuilder';
@@ -16,12 +16,17 @@ const Modal = ({
   modalUri: string;
 }) => {
   const [form] = Form.useForm();
+  const [modalLoading, setModalLoading] = useState(true);
   const init = useRequest<{ data: BasicListApi.PageData }>(
     `https://public-api-v2.aspirantzhang.com${modalUri}?X-API-KEY=antd`,
     {
       manual: true,
+      onSuccess: () => {
+        changeLoading(false);
+      },
       onError: () => {
         hideModal();
+        changeLoading(false);
       },
     },
   );
@@ -50,6 +55,7 @@ const Modal = ({
           key: 'process',
         });
         hideModal(true);
+        changeLoading(false);
       },
       formatResult: (res: any) => {
         return res;
@@ -97,6 +103,10 @@ const Modal = ({
     }
   };
 
+  function changeLoading(isLoading: boolean) {
+    setModalLoading(isLoading);
+  }
+
   return (
     <div>
       <AntdModal
@@ -108,28 +118,33 @@ const Modal = ({
         footer={ActionsBuilder(
           init?.data?.layout?.actions[0]?.data,
           actionHandler,
-          request.loading,
+          request?.loading,
+          {},
+          init?.data?.dataSource?.update_time,
         )}
         maskClosable={false}
+        forceRender
       >
-        <Form
-          form={form}
-          {...layout}
-          initialValues={{
-            create_time: moment(),
-            update_time: moment(),
-            status: true,
-          }}
-          onFinish={onFinish}
-        >
-          {FormBuilder(init?.data?.layout?.tabs[0]?.data)}
-          <Form.Item name="uri" key="uri" hidden>
-            <Input />
-          </Form.Item>
-          <Form.Item name="method" key="method" hidden>
-            <Input />
-          </Form.Item>
-        </Form>
+        <Spin spinning={modalLoading}>
+          <Form
+            form={form}
+            {...layout}
+            initialValues={{
+              create_time: moment(),
+              update_time: moment(),
+              status: true,
+            }}
+            onFinish={onFinish}
+          >
+            {FormBuilder(init?.data?.layout?.tabs[0]?.data)}
+            <Form.Item name="uri" key="uri" hidden>
+              <Input />
+            </Form.Item>
+            <Form.Item name="method" key="method" hidden>
+              <Input />
+            </Form.Item>
+          </Form>
+        </Spin>
       </AntdModal>
     </div>
   );

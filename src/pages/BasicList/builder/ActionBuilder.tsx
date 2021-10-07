@@ -1,20 +1,31 @@
 import { Button } from 'antd';
+import moment from 'moment';
 import type { ButtonType } from 'antd/lib/button';
+import styles from './ActionBuilder.less';
 
 const ActionsBuilder = (
   actions: BasicListApi.Action[] | undefined,
   actionHandler: BasicListApi.ActionHandler,
-  loading: false,
-  record: {},
+  loading?: false,
+  record?: any,
+  update_time?: '',
 ) => {
-  return (actions || []).map((action: any) => {
+  const componentArr = [];
+  if (update_time) {
+    componentArr.push(
+      <span className={styles.update_time}>
+        Update Time: {moment(update_time).format('YYYY-MM-DD HH:mm:ss')}
+      </span>,
+    );
+  }
+  const actionsArr = (actions || []).map((action: any) => {
     if (action.component === 'button') {
       return (
         <Button
           key={action.text}
           type={action.type as ButtonType}
           onClick={() => {
-            actionHandler(action, record);
+            actionHandler(action, record || {});
           }}
           loading={loading}
         >
@@ -22,8 +33,9 @@ const ActionsBuilder = (
         </Button>
       );
     }
-    return null;
+    return <span />;
   });
+  return componentArr.concat(actionsArr);
 };
 
 export default ActionsBuilder;
