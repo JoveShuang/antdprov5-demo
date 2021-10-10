@@ -4,7 +4,15 @@ export const submitFieldsAdaptor = (formValues: any) => {
   const newValues = formValues;
   Object.keys(formValues).forEach((key) => {
     if (moment.isMoment(formValues[key])) {
-      formValues[key] = moment(formValues[key]).format();
+      moment(formValues[key]).format();
+    }
+    if (Array.isArray(formValues[key])) {
+      newValues[key] = formValues[key].map((innerValue: any) => {
+        if (moment.isMoment(innerValue)) {
+          return moment(innerValue).format();
+        }
+        return innerValue;
+      });
     }
   });
   return newValues;

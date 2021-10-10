@@ -1,12 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { useSessionStorageState } from 'ahooks';
-import { Table, Row, Col, Card, Pagination, Space, Modal as AntdModal, message } from 'antd';
+import { useSessionStorageState, useToggle } from 'ahooks';
+import { stringify } from 'query-string';
+// import QueueAnim from 'rc-queue-anim';
+import {
+  Table,
+  Row,
+  Col,
+  Card,
+  Pagination,
+  Space,
+  Modal as AntdModal,
+  message,
+  Button,
+  Tooltip,
+  Form,
+  InputNumber,
+} from 'antd';
 import { useRequest, useIntl, history } from 'umi';
 import { FooterToolbar, PageContainer } from '@ant-design/pro-layout';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { ExclamationCircleOutlined, SearchOutlined } from '@ant-design/icons';
 import ColumnBuilder from './builder/ColumnBuilder';
 import ActionsBuilder from './builder/ActionBuilder';
+import SearchBuilder from './builder/SearchBuilder';
 import Modal from './component/Modal';
+import { submitFieldsAdaptor } from './helper';
 import styles from './index.less';
 
 const Index = () => {
@@ -20,11 +37,22 @@ const Index = () => {
     'basicListTableColumns',
     [],
   );
+  const [searchVisible, searchAction] = useToggle(false);
   const { confirm } = AntdModal;
   const intl = useIntl();
+  const [searchForm] = Form.useForm();
 
   const init = useRequest<{ data: BasicListApi.Data }>(
-    `https://public-api-v2.aspirantzhang.com/api/admins?X-API-KEY=antd${pageQuery}${sortQuery}`,
+    // `https://public-api-v2.aspirantzhang.com/api/admins?X-API-KEY=antd${pageQuery}${sortQuery}`,
+    (values: any) => {
+      return {
+        url: `https://public-api-v2.aspirantzhang.com/api/admins?X-API-KEY=antd${pageQuery}${sortQuery}`,
+        params: values,
+        paramsSerializer: (params: any) => {
+          return stringify(params, { arrayFormat: 'comma', skipEmptyString: true, skipNull: true });
+        },
+      };
+    },
   );
 
   const request = useRequest(
@@ -172,7 +200,49 @@ const Index = () => {
     },
   };
 
-  const searchLayout = () => {};
+  const onFinish = (value: any) => {
+    init.run(submitFieldsAdaptor(value));
+  };
+
+  const searchLayout = () => {
+    return (
+      // <QueueAnim type="top">
+      //   {
+      searchVisible && (
+        <Card className={styles.searchForm} key="searchForm">
+          <Form onFinish={onFinish} form={searchForm}>
+            <Row gutter={24}>
+              <Col sm={6}>
+                <Form.Item label="ID" name="id" key="id">
+                  <InputNumber style={{ width: '100%' }} />
+                </Form.Item>
+              </Col>
+              {SearchBuilder(init?.data?.layout?.tableColumn)}
+            </Row>
+            <Row>
+              <Col sm={24} className={styles.textAlignRight}>
+                <Space>
+                  <Button type="primary" htmlType="submit">
+                    Submit
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      init.run();
+                      searchForm.resetFields();
+                    }}
+                  >
+                    Clear
+                  </Button>
+                </Space>
+              </Col>
+            </Row>
+          </Form>
+        </Card>
+      )
+      //   }
+      // </QueueAnim>
+    );
+  };
 
   const beforeTableLayout = () => {
     return (
@@ -181,7 +251,19 @@ const Index = () => {
           ...
         </Col>
         <Col xs={24} sm={12} className={styles.tableToolBar}>
-          <Space>{ActionsBuilder(init.data?.layout?.tableToolBar, actionHandler)}</Space>
+          <Space>
+            <Tooltip title="search">
+              <Button
+                shape="circle"
+                icon={<SearchOutlined />}
+                onClick={() => {
+                  searchAction.toggle();
+                }}
+                type={searchVisible ? 'primary' : 'default'}
+              />
+            </Tooltip>
+            {ActionsBuilder(init.data?.layout?.tableToolBar, actionHandler)}
+          </Space>
         </Col>
       </Row>
     );
