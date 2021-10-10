@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSessionStorageState, useToggle } from 'ahooks';
+import { useSessionStorageState, useToggle, useUpdateEffect } from 'ahooks';
 import { stringify } from 'query-string';
 // import QueueAnim from 'rc-queue-anim';
 import {
@@ -77,6 +77,7 @@ const Index = () => {
     },
     {
       manual: true,
+      throttleInterval: 1000,
       onSuccess: (res) => {
         message.success({
           content: res?.message,
@@ -89,9 +90,17 @@ const Index = () => {
     },
   );
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     init.run();
   }, [pageQuery, sortQuery, location.pathname]);
+
+  // useTrackedEffect(
+  //   (changes: [], previousDeps: [], currentDeps: []) => {
+  //     console.log(changes, previousDeps, currentDeps)
+  //     init.run()
+  //   },
+  //   [pageQuery, sortQuery, location.pathname],
+  // )
 
   useEffect(() => {
     if (init?.data?.layout?.tableColumn) {
