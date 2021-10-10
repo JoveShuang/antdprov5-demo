@@ -1,14 +1,15 @@
 import type { Settings as LayoutSettings } from '@ant-design/pro-layout';
 import { PageLoading } from '@ant-design/pro-layout';
 import type { RunTimeLayoutConfig } from 'umi';
-import { history, Link } from 'umi';
+import { history } from 'umi';
 import { message } from 'antd';
 import RightContent from '@/components/RightContent';
 import Footer from '@/components/Footer';
-import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
-import { BookOutlined, LinkOutlined } from '@ant-design/icons';
+import {
+  currentUser as queryCurrentUser,
+  currentMenu as queryCurrentMenu,
+} from './services/ant-design-pro/api';
 
-const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
 
 /** 获取用户信息比较慢的时候会展示一个 loading */
@@ -22,6 +23,7 @@ export const initialStateConfig = {
 export async function getInitialState(): Promise<{
   settings?: Partial<LayoutSettings>;
   currentUser?: API.CurrentUser;
+  currentMenu?: any;
   fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
 }> {
   const fetchUserInfo = async () => {
@@ -33,12 +35,23 @@ export async function getInitialState(): Promise<{
     }
     return undefined;
   };
+  const fetchMenu = async () => {
+    try {
+      const data = await queryCurrentMenu();
+      return data;
+    } catch (error) {
+      message.error('Get menu data failed', 10);
+    }
+    return undefined;
+  };
   // 如果是登录页面，不执行
   if (history.location.pathname !== loginPath) {
     const currentUser = await fetchUserInfo();
+    const currentMenu = await fetchMenu();
     return {
       fetchUserInfo,
       currentUser,
+      currentMenu,
       settings: {},
     };
   }
@@ -64,19 +77,19 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
         history.push(loginPath);
       }
     },
-    links: isDev
-      ? [
-          <Link to="/umi/plugin/openapi" target="_blank">
-            <LinkOutlined />
-            <span>OpenAPI 文档</span>
-          </Link>,
-          <Link to="/~docs">
-            <BookOutlined />
-            <span>业务组件文档</span>
-          </Link>,
-        ]
-      : [],
     menuHeaderRender: undefined,
+    menuDataRender: () => {
+      return initialState?.currentMenu;
+    },
+    // menu: {
+    //   params: {
+    //     userId: initialState?.currentUser?.userid
+    //   },
+    //   request: async () => {
+    //     const menuData = await queryCurrentMenu()
+    //     return menuData
+    //   }
+    // },
     // 自定义 403 页面
     // unAccessible: <div>unAccessible</div>,
     ...initialState?.settings,

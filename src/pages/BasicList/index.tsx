@@ -16,7 +16,7 @@ import {
   Form,
   InputNumber,
 } from 'antd';
-import { useRequest, useIntl, history } from 'umi';
+import { useRequest, useIntl, history, useLocation } from 'umi';
 import { FooterToolbar, PageContainer } from '@ant-design/pro-layout';
 import { ExclamationCircleOutlined, SearchOutlined } from '@ant-design/icons';
 import ColumnBuilder from './builder/ColumnBuilder';
@@ -41,12 +41,16 @@ const Index = () => {
   const { confirm } = AntdModal;
   const intl = useIntl();
   const [searchForm] = Form.useForm();
+  const location = useLocation();
 
   const init = useRequest<{ data: BasicListApi.Data }>(
     // `https://public-api-v2.aspirantzhang.com/api/admins?X-API-KEY=antd${pageQuery}${sortQuery}`,
     (values: any) => {
       return {
-        url: `https://public-api-v2.aspirantzhang.com/api/admins?X-API-KEY=antd${pageQuery}${sortQuery}`,
+        url: `https://public-api-v2.aspirantzhang.com/${location.pathname.replace(
+          '/basic-list',
+          '',
+        )}?X-API-KEY=antd${pageQuery}${sortQuery}`,
         params: values,
         paramsSerializer: (params: any) => {
           return stringify(params, { arrayFormat: 'comma', skipEmptyString: true, skipNull: true });
@@ -87,7 +91,7 @@ const Index = () => {
 
   useEffect(() => {
     init.run();
-  }, [pageQuery, sortQuery]);
+  }, [pageQuery, sortQuery, location.pathname]);
 
   useEffect(() => {
     if (init?.data?.layout?.tableColumn) {
